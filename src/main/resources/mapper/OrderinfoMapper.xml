@@ -8,10 +8,68 @@
     <result column="ORDERTIME" property="ordertime" jdbcType="VARCHAR" />
     <result column="PID" property="pid" jdbcType="DECIMAL" />
   </resultMap>
+
+  <resultMap id="BaseResultMap2" type="entity.Orderinfo" >
+  <id column="O_ID" property="oId" jdbcType="DECIMAL" />
+  <result column="USERID" property="userid" jdbcType="DECIMAL" />
+  <result column="STATUS" property="status" jdbcType="DECIMAL" />
+  <result column="ORDERTIME" property="ordertime" jdbcType="VARCHAR" />
+  <result column="PID" property="pid" jdbcType="DECIMAL" />
+
+  <!--infodetail表想要加字段,就是要在实体类里面就是加字段,就是自己定义-->
+  <result column="OD_NUM" property="odNum" jdbcType="DECIMAL" />
+  <result column="P_ID" property="pId" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap3" type="entity.Orderinfo" >
+    <id column="O_ID" property="oId" jdbcType="DECIMAL" />
+    <result column="USERID" property="userid" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="ORDERTIME" property="ordertime" jdbcType="VARCHAR" />
+    <result column="PID" property="pid" jdbcType="DECIMAL" />
+
+    <!--infodetail表想要加字段,就是要在实体类里面就是加字段,就是自己定义-->
+    <result column="OD_NUM" property="odNum" jdbcType="DECIMAL" />
+    <result column="P_ID" property="pId" jdbcType="DECIMAL" />
+
+    <!--productinfo就是在这个这个字段就是在用来查询产品表,-->
+    <result column="P_TYPE" property="pType" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+
   <sql id="Base_Column_List" >
     O_ID, USERID, STATUS, ORDERTIME, PID
   </sql>
 
+  <sql id="Base_Column_List2" >
+    O_ID, USERID, STATUS, ORDERTIME, PID,P_ID, OD_NUM
+  </sql>
+
+  <sql id="Base_Column_List3" >
+    O_ID, USERID, STATUS, ORDERTIME, PID,P_ID, OD_NUM,P_TYPE, BRAND,PRICE
+  </sql>
+
+<!--就是联合produncinfo的表的拆查询语句，-->
+<select id="selectAllReturnGoods" resultMap="BaseResultMap3">
+/*select * from orderinfo  a,  orderdetail b ,productinfo p where  a.pid = b.od_id and b.p_id =p.p_id and a.status =2
+*/
+    select oi.O_ID, oi.USERID, oi.STATUS, oi.ORDERTIME, oi.PID, odi.OD_NUM ,pi.P_TYPE, pi.BRAND,pi.PRICE
+    from   orderinfo oi left  join  orderdetail odi on  oi.PID = odi.OD_ID left  join  productinfo pi on  odi.P_ID =pi.P_ID
+     where oi.status = 2 order by O_ID
+</select>
+
+
+<!--就是待发货的查询语句,用到的是两张表,就是要添加字段-->
+<select id="selectAllUndeliverOrders" resultMap="BaseResultMap2" >
+/*就是单独一个orderdetail的查询*/
+ <!-- select <include refid="Base_Column_List" /> from ORDERINFO where STATUS ='0'order by O_ID-->
+  /*就是两张表一起查询orderdetail 和orderinfo*/
+  select <include refid="Base_Column_List2" /> from ORDERINFO  a,  ORDERDETAIL b where a.PID = b.OD_ID and status =0 order by O_ID
+
+</select>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -77,6 +135,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="entity.Orderinfo" >
+
     update ORDERINFO
     <set >
       <if test="userid != null" >

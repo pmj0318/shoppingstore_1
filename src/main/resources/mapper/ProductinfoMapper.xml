@@ -31,12 +31,20 @@
     select <include refid="Base_Column_List"/> from productinfo where p_type = #{p_type,jdbcType=VARCHAR}
   </select>
 
+  <!--就是三个子查询,还得是判断状态是pnum>0和状态不为1-->
   <select id="selectAllProductsByP_type" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from(
       select t.<include refid="Base_Column_List"/>,rownum rn from (
-      select <include refid="Base_Column_List"/> from productinfo where p_type=#{p_type,jdbcType=VARCHAR}) t where rownum&lt;=#{page,jdbcType=DECIMAL}*3)
+      select <include refid="Base_Column_List"/> from productinfo where p_type=#{p_type,jdbcType=VARCHAR}and P_NUM>0 and status!=1) t where rownum&lt;=#{page,jdbcType=DECIMAL}*3)
       where rn>=(#{page,jdbcType=DECIMAL}-1)*3+1
   </select>
+
+  <!--模糊查询,就是#就是前段获取的参数 '%"+name+"%+ '  -->
+  <select id="selectLike" resultMap="BaseResultMap"  >
+select <include refid="Base_Column_List"/> from Productinfo where p_name  like #{pName,jdbcType=VARCHAR}
+  </select>
+
+
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -53,7 +61,7 @@
   <insert id="insert" parameterType="entity.Productinfo" >
     insert into PRODUCTINFO (P_ID, P_CODE, P_NAME, 
       P_TYPE, BRAND, PIC, 
-      P_NUM, PRICE, SALE, 
+      P_NUM, PRICE, SALE, ``
       INTRO, STATUS)
     values (#{pId,jdbcType=DECIMAL}, #{pCode,jdbcType=DECIMAL}, #{pName,jdbcType=VARCHAR}, 
       #{pType,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 

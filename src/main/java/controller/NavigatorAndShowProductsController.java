@@ -1,7 +1,6 @@
 package controller;
 
 import entity.Productinfo;
-import entity.WebInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +15,6 @@ public class NavigatorAndShowProductsController {
 
     @Autowired
     ProductinfoServiceImpl psi;
-
-    @Autowired
-    WebInfoServiceImpl wsi;
 
     @RequestMapping("selectAllP_type")
     public List<String> selectAllP_type(){
@@ -51,13 +47,6 @@ public class NavigatorAndShowProductsController {
 
 
 
-
-    //获取
-    @RequestMapping("getWebData")
-    public List<WebInfo> selectAll(){
-        return wsi.selectAll();
-    }
-
     //将商品状态改为已上架
     @RequestMapping("upanddown")
     public int up(@RequestParam Integer pid,@RequestParam Integer status){
@@ -73,4 +62,7 @@ public class NavigatorAndShowProductsController {
             return psi.updateByPrimaryKeySelective(pi);
         }
     }
+
+
+
 }

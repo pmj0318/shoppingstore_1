@@ -14,6 +14,12 @@ public class ProductinfoServiceImpl implements ProductinfoService {
     @Autowired
     ProductinfoMapper pim;
 
+
+    @Override
+    public List<Productinfo> selectLike(String name) {
+        return pim.selectLike(name);
+    }
+
     @Override
     public List<String> selectAllP_type() {
         return pim.selectAllP_type();

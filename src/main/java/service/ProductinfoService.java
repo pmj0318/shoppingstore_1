@@ -5,6 +5,7 @@ import entity.Productinfo;
 import java.util.List;
 
 public interface ProductinfoService {
+    List<Productinfo> selectLike(String name);//模糊查询
 
     List<String> selectAllP_type();
 

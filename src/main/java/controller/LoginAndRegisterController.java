@@ -22,7 +22,7 @@ public class LoginAndRegisterController {
 
 
     @RequestMapping("login")
-    public String login(@RequestParam String username, @RequestParam String password, @RequestParam String flag, HttpServletRequest request, HttpServletResponse resp){
+    public String login(@RequestParam String username, @RequestParam String password, @RequestParam String flag, HttpServletResponse resp){
         Userinfo ui = usi.selectByUsername(username);
         if(ui == null){
             return "none";

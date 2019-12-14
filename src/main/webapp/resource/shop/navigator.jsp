@@ -43,6 +43,17 @@
            bottom:250px;
            background-color: white;
        }
+       #userImg{
+           display: none;
+           position: fixed;
+           left:20px;
+           bottom:500px;
+           background-color: white;
+           width: 50px;
+           height: 50px;
+
+       }
+
 
    </style>
 
@@ -292,9 +303,11 @@
 <iframe  id="myframe"></iframe>
 <img src="<%=basePath%>resource/images/top.png" id="topImg"/>
 <img src="<%=basePath%>resource/images/cart.png" id="carImg"/>
+<img src="<%=basePath%>resource/images/user.png" id="userImg"/>
 <script>
 $(function(){
 /*一进页面就发请求查询所有的类别*/
+    $("#userImg").show();
    $.ajax({
       url:"selectAllP_type",
        type:"post",
@@ -329,6 +342,8 @@ $(function(){
        $("#myframe").show();
        $("#topImg").show();
        $("#carImg").show();
+       $("#userImg").hide();
+
    });
 
    $("#topImg").click(function(){
@@ -336,6 +351,8 @@ $(function(){
        $("#myframe").hide(1000);
        $("#topImg").hide();
        $("#carImg").hide();
+       $("#userImg").hide();
+
    });
    $("#carImg").click(function(){
 
@@ -346,6 +363,16 @@ $(function(){
            window.open("<%=basePath%>resource/shop/carItems.jsp")
        }
    });
+
+   /*就是个人中心*/
+    $("#userImg").click(function() {
+
+        window.open("<%=basePath%>resource/user/onlyPeople.jsp")
+    })
+
+
+
+
 });
 
 function getQueryString(name){
@@ -358,8 +385,8 @@ function getQueryString(name){
 
 </script>
 <div class="search d1">
-    <form>
-        <input type="text" placeholder="搜索从这里开始...">
+    <form action="<%=basePath%>selectLike"  accept-charset="UTF-8">
+        <input type="text" placeholder="搜索从这里开始..." name="name" >
         <button type="submit"></button>
     </form>
 </div>

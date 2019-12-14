@@ -2,7 +2,13 @@ package mapper;
 
 import entity.Orderinfo;
 
+import java.util.List;
+
 public interface OrderinfoMapper {
+
+    List<Orderinfo> selectAllReturnGoods();//就是查询所有的定义退货的物品
+
+    List<Orderinfo> selectAllUndeliverOrders();
 
     int deleteByPrimaryKey(Integer oId);
 

@@ -52,7 +52,7 @@ public class OrderAspect {
             Userinfo ui = new Userinfo();
             Orderdetail od = new Orderdetail();
             oi.setUserid(usi.selectUidByusername((String) joinPoint.getArgs()[0]));
-            oi.setStatus(0);
+            oi.setStatus(0);//生成订单
             Date date = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             oi.setOrdertime(sdf.format(date));

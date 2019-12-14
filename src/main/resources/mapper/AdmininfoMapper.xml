@@ -10,6 +10,15 @@
   <sql id="Base_Column_List" >
     AD_ID, AD_NAME, AD_PASSWORD, ROLE
   </sql>
+
+  <!--根据用户名查询用户是否存在-->
+  <select id="selectByadName" resultMap="BaseResultMap" parameterType="entity.Admininfo" >
+    select
+    <include refid="Base_Column_List" />
+    from ADMININFO
+    where AD_NAME = #{adName,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -21,6 +30,12 @@
     where AD_ID = #{adId,jdbcType=DECIMAL}
   </delete>
   <insert id="insert" parameterType="entity.Admininfo" >
+
+    /*指定序列*/
+    <selectKey resultType="int"  keyProperty="uId" order="BEFORE">
+      select SEQ_admin_info_ad_ID.nextval from dual
+    </selectKey>
+
     insert into ADMININFO (AD_ID, AD_NAME, AD_PASSWORD, 
       ROLE)
     values (#{adId,jdbcType=DECIMAL}, #{adName,jdbcType=VARCHAR}, #{adPassword,jdbcType=VARCHAR}, 
