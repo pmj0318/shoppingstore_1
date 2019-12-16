@@ -9,7 +9,7 @@ import serviceImpl.OrderinfoServiceImpl;
 
 import java.util.List;
 @RestController
-public class UndeliverOrdersController {
+public class UndeliverOrdersController {//待发货
     @Autowired
     OrderinfoServiceImpl odi;
 

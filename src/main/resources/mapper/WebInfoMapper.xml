@@ -10,6 +10,7 @@
 insert into webinfo(VISITTIME,VISITTIMES) values(#{visittime,jdbcType=VARCHAR},#{visittimes,jdbcType=DECIMAL})
 </insert>
 
+    <!--就是统计在线人数-->
  <select id="selectAll" resultMap="BaseResultMap" >
  select VISITTIME,VISITTIMES from webinfo order  by to_date(VISITTIME,'yyyy-MM') DESC
  </select>

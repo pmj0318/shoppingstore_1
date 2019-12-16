@@ -219,6 +219,7 @@
 
         });
 
+        /*个人中心*/
         $("#people").click(function () {
             $("#myframe").attr("src","resource/user/onlyPeople.jsp");
         })

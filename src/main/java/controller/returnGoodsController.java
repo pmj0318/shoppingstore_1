@@ -9,7 +9,7 @@ import serviceImpl.OrderinfoServiceImpl;
 
 import java.util.List;
 @RestController
-public class returnGoodsController {
+public class returnGoodsController {//退货
     @Autowired
     OrderinfoServiceImpl odi;
 
@@ -22,8 +22,9 @@ public class returnGoodsController {
 public int handReturnGoods(@RequestParam Integer oId){
     Orderinfo oi = new Orderinfo();
     oi.setoId(oId);
+    oi.setStatus(3);
     System.out.println(oi);
-    int i = odi.deleteByPrimaryKey(oId);//订单取消就是删除id
+    int i = odi.updateByPrimaryKeySelective(oi);//订单取消就是删除id,其实是不对的,设置成另外一种状态
     System.out.println(i);
     return i;
 }

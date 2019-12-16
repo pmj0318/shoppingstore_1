@@ -90,7 +90,7 @@
                         <h2>待付款</h2>
                     </div>
                 </a>
-                <a href="#" class="jq22-palace-grid">
+                <a href="<%=basePath%>resource/admin/unDeliverOrders.jsp" class="jq22-palace-grid">
                     <div class="jq22-palace-grid-icon">
                         <img src="<%=basePath%>resource/images/nav-003.png" alt="">
                     </div>
@@ -98,7 +98,7 @@
                         <h2>待发货</h2>
                     </div>
                 </a>
-                <a href="#" class="jq22-palace-grid">
+                <a href="<%=basePath%>resource/admin/returnGoods.jsp" class="jq22-palace-grid">
                     <div class="jq22-palace-grid-icon">
                         <img src="<%=basePath%>resource/images/nav-004.png" alt="">
                     </div>
@@ -159,7 +159,7 @@
                         <h2>我的订单</h2>
                     </div>
                 </a>
-                <a href="#" class="jq22-palace-grid">
+                <a href="<%=basePath%>resource/shop/Coupon.jsp" class="jq22-palace-grid">
                     <div class="jq22-palace-grid-icon">
                         <img src="<%=basePath%>resource/images/nav-010.png" alt="">
                     </div>

@@ -8,7 +8,7 @@ public interface OrderinfoMapper {
 
     List<Orderinfo> selectAllReturnGoods();//就是查询所有的定义退货的物品
 
-    List<Orderinfo> selectAllUndeliverOrders();
+    List<Orderinfo> selectAllUndeliverOrders();//查询所有的代发货的产品
 
     int deleteByPrimaryKey(Integer oId);
 

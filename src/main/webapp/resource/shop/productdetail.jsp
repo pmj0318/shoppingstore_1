@@ -12,7 +12,7 @@
     <title>商品详情</title>
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script   src="resource/js/modernizr-custom-v2.7.1.min.js"></script>
-    <link rel="stylesheet" href="resource/css/shouye.css"/>
+    <link rel="stylesheet" href="<%=basePath%>resource/css/shouye.css"/>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 
 <style>

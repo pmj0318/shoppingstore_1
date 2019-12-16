@@ -48,14 +48,22 @@
 
 
 <script type="text/javascript">
+
     $(function () {
         $.ajax({
             url:"selectAllReturnGoods",
             type:"post",
             success:function (data) {
                 alert(data);
+                var str;
                 for(var i=0;i<data.length;i++){
-                    data[i].status='退货';
+                    if(data[i].status==2){
+                        data[i].status="退货"
+                        str="退货处理";
+                    }else if(data[i].status==3){
+                        data[i].status="退货成功"
+                        str="已处理退货";
+                    }
                     var tr="<tr class='tt'>"+
                         "<td >"+data[i].oId+"</td>"+
                         "<td>"+data[i].pid+"</td>"+
@@ -66,7 +74,7 @@
                         "<td>"+data[i].odNum+"</td>"+
                         "<td>"+data[i].ordertime+"</td>"+
                         "<td>"+data[i].status+"</td>"+
-                        "<td><button class='btn'>退货处理</button> </td>"+
+                        "<td><button class='btn'>"+str+"</button> </td>"+
                         "<tr>";
                     $("#tab").append(tr);
                   //  var oId = data[i].oId;

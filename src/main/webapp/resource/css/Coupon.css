@@ -1,0 +1,48 @@
+*{margin: 0px; padding:0px;}
+body{ width: 100%;background-color: #d3111a;}
+.contain{border-radius: 5px; margin-left: 12px;margin-right: 12px;
+    padding: 10px 13px 10px 13px; background-color: #f5d1d0; position: relative;}
+.coupon{position:relative;color:#d3111a;width:100%;height:100px;
+    display: flex;justify-content: space-around;margin-bottom: 10px;overflow:hidden;}
+.coupon:last-child{ margin-bottom: 0px;}
+.coupon:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.coupon-left{text-align:left;width:80%;background:white;height:95px;font-size:12px;position: relative;box-shadow: 0px 5px 0px #d4696e;
+    border-radius: 5px;
+}
+.coupon-right{text-align: center;width:20%;background:white;height:95px;position: relative;
+    box-shadow: 0px 5px 0px #d4696e;border-radius: 5px;}
+.coupon-inner{padding:10px 10px 10px 15px;
+    height:75px;position: relative;}
+.coupon-left-inner{display: flex;justify-content: space-between; padding:10px 10px 10px 15px; width:88%;}
+.coupon-money{width: 70%; padding-top: 10px;padding-bottom: 10px;}
+.coupon-left-inner-top{line-height: 32px;}
+.belongTo{ font-size: 18px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width: 100%;}
+.sum{ color:#b2b2b2;font-size:16px;}
+.coupon-condition{line-height: 75px;text-align: right; }
+.coupon-time{line-height:25px;font-weight: bolder;font-size: 20px;}
+.coupon-circle{display:inline-block;width:16px;height:16px;background:#f5d1d0;position: absolute;left:-9px;border-radius:50%;z-index: 20}
+.coupon-circle.top{top:-8px;}
+.coupon-circle.bottom{bottom: -8px;height: 16px;box-shadow: inset 0px 5px 0px #d4696e;}
+.center-circle{display: inline-block;width: 10px; height:95px;
+    position: absolute;left:-6px;top:0px; z-index: 10; }
+.center{ background: #d51d27;background: radial-gradient(#d51d27 5px, transparent 5px, transparent 5px);background-size: 15px 15px;background-position: 13px 10px;
+}
+.center:before{background-color:#d51d27;}
+@media screen and (max-width:374px){
+    .coupon{height:90px;
+        display: flex;justify-content: space-around;margin-bottom: 10px;overflow:hidden;
+    }
+    .coupon-left{height:85px;font-size:12px;
+    }
+    .coupon-right{height:85px;border-radius: 5px;}
+    .coupon-time{line-height:25px;font-weight: bolder;font-size: 16px;}
+    .coupon-inner{padding:5px 10px 10px 15px;
+        height:70px;position: relative;}
+
+    .coupon-circle.bottom{bottom: -10px;}
+    .coupon-circle.top{top:-10px;}
+
+    .center{ background: #d51d27;background: radial-gradient(#d51d27 5px, transparent 5px, transparent 5px);
+        background-size: 15px 15px;background-position: 13px 6px;
+    }
+}

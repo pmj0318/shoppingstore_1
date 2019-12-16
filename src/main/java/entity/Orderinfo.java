@@ -50,7 +50,7 @@ public class Orderinfo {
     public void setPid(Integer pid) {
         this.pid = pid;
     }
-//1就是根据连接表的字段然后及时连表的查询需要定义的字段
+//1待发货就是根据连接表的字段然后及时连表的查询需要定义的字段
     private Integer pId;
 
     private Integer odNum;
@@ -71,7 +71,7 @@ public class Orderinfo {
         this.odNum = odNum;
     }
 
-    /*2.j就是定义一个productinfo的扁表的字段*/
+    //.2.退货j就是定义一个productinfo的扁表的字段
     private String pType;
 
     private String brand;

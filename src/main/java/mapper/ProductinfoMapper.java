@@ -10,6 +10,7 @@ public interface ProductinfoMapper {
 
     List<String> selectAllP_type();
 
+    //根据页面查询,动态查询
     List<Productinfo> selectAllProductsByP_type(@Param(value = "p_type") String p_type, @Param(value="page") Integer page);
 
     List<Productinfo> selectAllProductsByPtype(String p_type);

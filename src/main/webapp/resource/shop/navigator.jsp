@@ -303,6 +303,7 @@
 <iframe  id="myframe"></iframe>
 <img src="<%=basePath%>resource/images/top.png" id="topImg"/>
 <img src="<%=basePath%>resource/images/cart.png" id="carImg"/>
+<%--引入大白--%>
 <img src="<%=basePath%>resource/images/user.png" id="userImg"/>
 <script>
 $(function(){
@@ -385,7 +386,7 @@ function getQueryString(name){
 
 </script>
 <div class="search d1">
-    <form action="<%=basePath%>selectLike"  accept-charset="UTF-8">
+    <form action="<%=basePath%>selectLike" method="post" >
         <input type="text" placeholder="搜索从这里开始..." name="name" >
         <button type="submit"></button>
     </form>

@@ -52,23 +52,23 @@
     O_ID, USERID, STATUS, ORDERTIME, PID,P_ID, OD_NUM,P_TYPE, BRAND,PRICE
   </sql>
 
-<!--就是联合produncinfo的表的拆查询语句，-->
-<select id="selectAllReturnGoods" resultMap="BaseResultMap3">
-/*select * from orderinfo  a,  orderdetail b ,productinfo p where  a.pid = b.od_id and b.p_id =p.p_id and a.status =2
-*/
-    select oi.O_ID, oi.USERID, oi.STATUS, oi.ORDERTIME, oi.PID, odi.OD_NUM ,pi.P_TYPE, pi.BRAND,pi.PRICE
-    from   orderinfo oi left  join  orderdetail odi on  oi.PID = odi.OD_ID left  join  productinfo pi on  odi.P_ID =pi.P_ID
-     where oi.status = 2 order by O_ID
-</select>
-
-
-<!--就是待发货的查询语句,用到的是两张表,就是要添加字段-->
+<!--就是待发货的查询语句,用到的是两张表,就是要添加字段在实体类中otderinfo-->
 <select id="selectAllUndeliverOrders" resultMap="BaseResultMap2" >
 /*就是单独一个orderdetail的查询*/
  <!-- select <include refid="Base_Column_List" /> from ORDERINFO where STATUS ='0'order by O_ID-->
   /*就是两张表一起查询orderdetail 和orderinfo*/
   select <include refid="Base_Column_List2" /> from ORDERINFO  a,  ORDERDETAIL b where a.PID = b.OD_ID and status =0 order by O_ID
 
+</select>
+
+
+  <!--退货商品,就是联合produncinfo的表的拆查询语句，2退货,3是修改完已处理退货-->
+  <select id="selectAllReturnGoods" resultMap="BaseResultMap3">
+/*select * from orderinfo  a,  orderdetail b ,productinfo p where  a.pid = b.od_id and b.p_id =p.p_id and a.status =2
+*/
+    select oi.O_ID, oi.USERID, oi.STATUS, oi.ORDERTIME, oi.PID, odi.OD_NUM ,pi.P_TYPE, pi.BRAND,pi.PRICE
+    from   orderinfo oi left  join  orderdetail odi on  oi.PID = odi.OD_ID left  join  productinfo pi on  odi.P_ID =pi.P_ID
+     where oi.status = 2 or oi.status = 3 order by O_ID
 </select>
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
