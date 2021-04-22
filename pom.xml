@@ -155,7 +155,7 @@
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.3.1</version>
+      <version>3.5.6</version>
     </dependency>
 
     <!--这是为了让mybatis整合到spring框架factory-bean中,用来扮演spring中产生dao的工厂的角色-->
